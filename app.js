@@ -1,7 +1,7 @@
 const express = require('express');
 
-
 const pageController = require('./controllers/pageController');
+const pageRoute = require('./routes/pageRoutes');
 
 const app = express();
 
@@ -11,12 +11,8 @@ app.set('view engine', 'ejs');
 //Middleware
 app.use(express.static('public'));
 
-
 //ROUTES
-app.get('/', pageController.getIndex);
-app.get('/about', pageController.getIndex);
-app.get('/contact', pageController.getContact);
-app.get('/dasbhoard', pageController.getDashboard);
+app.use('/',pageRoute);
 
 
 const port = 3000;
