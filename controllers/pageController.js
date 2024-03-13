@@ -28,13 +28,3 @@ exports.getRegister = (req, res) => {
     pageName: 'register',
   });
 };
-exports.getCourses = (req, res) => {
-  res.status(200).render('courses', {
-    pageName: 'courses',
-  });
-};
-exports.getCourse = (req, res) => {
-  res.status(200).render('course-single', {
-    pageName: 'course',
-  });
-};
