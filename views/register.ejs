@@ -6,18 +6,35 @@
 	        <div class="container">
             <div class="section-title text-center">
                 <h3 class="mt-5">REGISTER</h3>
-
+                <% if (flashMessage) { %>
+                    <% if (flashMessage.success) { %>
+                        <div class="alert alert-success">
+                            <%= flashMessage.success %>
+                        </div>
+                    <% } %>
+                    <% if (flashMessage.error) { %>
+                        <div class="alert alert-danger">
+                            <%= flashMessage.error %>
+                        </div>
+                    <% } %>
+                <% } %>
             <div class="row">
                 <div class="col-xl-12 col-md-12 col-sm-12">
                     <div class="contact_form">
                         <div id="message"></div>
-                        <form class="" name="contactform" method="post">
+                        <form class="" name="contactform" method="POST" action="/users/signup">
                             <div class="row row-fluid">
 							    <div class="offset-1 col-lg-10 col-md-10 col-sm-10">
                                     <input type="text" name="name" id="name" class="form-control" placeholder="Name">
                                 </div>
                                 <div class="offset-1 col-lg-10 col-md-10 col-sm-10">
                                     <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="offset-1 col-lg-10 col-md-10 col-sm-10" >
+                                    <select name="role" id="" class="form-control" style="cursor: pointer;">
+                                        <option value="Student">Student</option>
+                                        <option value="Teacher">Teacher</option>
+                                    </select>
                                 </div>
                                 <div class="offset-1 col-lg-10 col-md-10 col-sm-10">
                                     <input type="password" name="password" id="password" class="form-control" placeholder="Password">

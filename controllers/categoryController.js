@@ -17,13 +17,24 @@ exports.createCategory = async (req, res) => {
 };
 exports.getAllCategories = async (req, res) => {
     try {
+      const search = req.query.search;
+
+      let filter = {name : ''};
+      if(search) {
+        filter = {name : search};
+      }
+
+
       const category = await Category.findOne({slug : req.params.slug});
       const categories = await Category.find({});
 
-      const courses = await Course.find({category : category._id});
+      const courses = await Course.find({
+        $or : [
+          {name : {$regex:  '.*' + filter.name + '.*' ,$options: 'i' }},
+          {category : category._id}
+        ]
+      }).sort('-createdAt');
 
-      console.log(category);
-      
       res.status(200).render('courses', {
         pageName: 'courses',
         courses,

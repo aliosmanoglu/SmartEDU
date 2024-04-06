@@ -23,6 +23,10 @@ const CourseSchema = new Schema({
     ref : 'Category',
     required : true
   },
+  user : {
+    type : mongoose.Schema.Types.ObjectId,
+    ref : 'User',
+  },
   slug : {
     type : String,
     unique : true
